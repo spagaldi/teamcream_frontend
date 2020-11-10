@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import SignIn from './SignIn.js'
-import Username from './Username.js'
+import SignIn from './SignIn.js';
+import Username from './Username.js';
+import ResetPw from './ResetPw.js';
 import { StyleSheet, Text, Image, View, TextInput, TouchableOpacity, Alert } from 'react-native';
 
 export default function App() {
   return (  
-    <SignIn/>
+    <ResetPw/>
   
   );
 }
