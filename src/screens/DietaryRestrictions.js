@@ -13,12 +13,25 @@ const styles = StyleSheet.create({
       backgroundColor: '#fef4d1',
       alignItems: "center"
     },
+
+    boxes: {backgroundColor: "white", 
+    height: '10%', 
+    marginTop: 10, 
+    borderStyle: "solid", 
+    borderColor: 'black', 
+    borderWidth: 2, 
+    borderRadius: 3,
+    marginBottom: 30},
+
+    text: {top: '30%', paddingLeft: 6, width: 100},
   });
 
 const DietaryRestrictions = () => {
     const [isSelected, setSelection] = useState(false);
     return (
         <View style = {styles.canvas}>
+
+            [/*Header: please select all that Apply*/]
             <View style={{top: height * .15}}>
                 <Text style = {{
                     fontWeight: "900",
@@ -28,13 +41,31 @@ const DietaryRestrictions = () => {
                 }}> Please Select All That Apply:
                 </Text>
             </View>
-            <View style={{top: height * .25, backgroundColor: "#ffff", width: width - 40, height: height * .55, 
+
+            [/*Container of all the boxes*/]
+            <View style={{top: height * .20, backgroundColor: styles.canvas.backgroundColor, width: width - 40, height: height * .55, 
             flexDirection: "column"}}>
+                [/* Header of the container "Dietary Restriction" */]
                 <Text style={{fontFamily: "Roboto", fontSize:20, fontWeight: "900"}}>Dietary Restrictions</Text>
-                <View style= {{backgroundColor: "red", height: '10%', marginTop: 10, borderStyle: "solid", borderColor: 'black', 
-                borderWidth: 2, borderRadius: 3}}>
-                    <Text style={{top: '30%', paddingLeft: 6, width: 100}}>Vegetarian?</Text>
+
+                [/* The boxes */]
+                <View style= {styles.boxes}>
+                    <Text style={styles.text}>Vegetarian?</Text>
                 </View>
+
+                <View style= {styles.boxes}>
+                    <Text style={styles.text}>Dairy Free?</Text>
+                    <CheckBox/>
+                </View>
+
+                <View style= {styles.boxes}>
+                    <Text style={styles.text}>Vegan?</Text>
+                </View>
+
+                <View style= {styles.boxes}>
+                    <Text style={styles.text}>Gluten Free?</Text>
+                </View>
+
             </View>
         </View>
     )
