@@ -1,7 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import OAuth from './OAuth.js'
-import { StyleSheet, Text, Image, View, TextInput, TouchableOpacity, Alert, TouchableHighlight, Dimensions } from 'react-native';
+import OAuth from '../components/OAuth.js'
+import { StyleSheet, Text, Image, View, TextInput, TouchableOpacity, Alert, Dimensions } from 'react-native';
+import { Entypo } from '@expo/vector-icons';
 
 const dimensions = Dimensions.get('window');
 const width = dimensions.width;
@@ -11,10 +11,11 @@ const SignIn = () => {
     
     return (
         <View style={styles.container}>
-            <View style={{padding: height*.05}}>
+            <View style={{  marginTop: height*.05, marginBottom: height*.05}}>
                 <Image  
-                    style={{ width: .55*width, height: .3*height}} 
-                    source={require('./images/crumbs_logo.png')}
+                    resizeMode="contain"
+                    style={{ width: .75*width, height: .3*height}} 
+                    source={require('../../images/crumbs_logo.png')}
                />
             </View>
 
@@ -41,8 +42,9 @@ const SignIn = () => {
                 />
                 <View style={{alignItems:'center'}}>
                     <TouchableOpacity onPress= {() => Alert.alert('Enter password button pressed')}>
-                    <Image source={require('./images/submit.png')}
-                        style={{ width: width*.08, height: height*.08 }}/>
+                    {/* <Image source={require('../../images/submit.png')}
+                        style={{ width: width*.08, height: height*.08 }}/> */}
+                     <Entypo name="arrow-bold-right" size={36} color="black" />
                     </TouchableOpacity>
                 </View>
             </View>

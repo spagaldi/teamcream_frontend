@@ -1,8 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import OAuth from './OAuth.js'
-import { StyleSheet, Text, Image, View, TextInput, TouchableOpacity, Alert, TouchableHighlight, Dimensions, Button } from 'react-native';
-import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert, Dimensions} from 'react-native';
+import { RFPercentage} from "react-native-responsive-fontsize";
 
 const dimensions = Dimensions.get('window');
 const width = dimensions.width;
