@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import SignIn from './src/screens/SignInScreen.js';
+import SignUp from './src/screens/SignUpScreen';
 import Username from './src/screens/UsernameScreen.js';
 import ResetPw from './src/screens/ResetPwScreen.js';
 import { StyleSheet, Text, Image, View, TextInput, TouchableOpacity, Alert } from 'react-native';
@@ -8,7 +9,8 @@ import { StyleSheet, Text, Image, View, TextInput, TouchableOpacity, Alert } fro
 export default function App() {
   return (  
     // <ResetPw/>
-     <SignIn /> 
+    <SignIn /> 
+    // <SignUp />
     // <Username /> 
   
   );
