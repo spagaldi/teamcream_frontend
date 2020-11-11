@@ -23,7 +23,7 @@ const Username = ()=> {
           <Text style={{ bottom: 20, fontStyles: "Roboto", fontWeight: 'bold', paddingRight: 195, fontSize: 30}}>Username</Text>
           <StatusBar style="auto" />
         
-        {/*black lines*/}
+        {/*top black line*/}
 
             <View
              style={{
@@ -43,7 +43,7 @@ const Username = ()=> {
         {/*username field*/}
           <View>
               <TextInput
-              style={{ bottom: 50, width: 300, height: 35, backgroundColor: '#D9B580', borderColor: 'black', borderWidth: 1 }}
+              style={{ bottom: 50, width: 300, height: 35, backgroundColor: '#ffffff', borderColor: 'black', borderWidth: 1 }}
               placeholder="Enter email or username"/>
           </View>
 
@@ -58,22 +58,27 @@ const Username = ()=> {
           </View>
 
         
-            <View
-             style={{
-             borderColor: 'black',
-             borderWidth: 1,
-             marginVertical: 40,
-             width: 350,
-             height: 2,
-             bottom: 50
-             
-             }}>
+          {/*bottom black line*/}
+          <View
+              style={{
+                borderColor: 'black',
+                borderWidth: 1,
+                marginVertical: 40,
+                width: 350,
+                height: 2,
+                bottom: 50
+            }}>
 
-             </View>
+          </View>
     
-            
-
+          <Text style = {{bottom: 75, right: 35 }}> Already have an account? </Text>
+          <TouchableOpacity onPress = {() => Alert.alert('LogIn Button has been pressed')} >
+            <Text style = {{bottom: 92.5, left: 75, fontWeight: "bold"}}> Log In.</Text>
+          </TouchableOpacity>
+      
       </View>
+
+
 
     )
 
