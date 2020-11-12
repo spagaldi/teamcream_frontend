@@ -7,7 +7,7 @@ const dimensions = Dimensions.get('window');
 const width = dimensions.width;
 const height = dimensions.height;
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
     
     return (
         <View style={styles.container}>
@@ -41,7 +41,7 @@ const SignIn = () => {
                 placeholder=" Enter password"
                 />
                 <View style={{alignItems:'center'}}>
-                    <TouchableOpacity onPress= {() => Alert.alert('Enter password button pressed')}>
+                    <TouchableOpacity onPress= {() => navigation.navigate('Username')}>
                     {/* <Image source={require('../../images/submit.png')}
                         style={{ width: width*.08, height: height*.08 }}/> */}
                      <Entypo name="arrow-bold-right" size={36} color="black" />

@@ -14,13 +14,13 @@ const styles = StyleSheet.create({
 });
 
 
-const Username = ()=> {
+const Username = ({navigation})=> {
     return (
         <View style = {styles.canvas}>
       
         {/*username header*/}
         
-          <Text style={{ bottom: 20, fontStyles: "Roboto", fontWeight: 'bold', paddingRight: 195, fontSize: 30}}>Username</Text>
+          <Text style={{ bottom: 20, fontStyle: "Roboto", fontWeight: 'bold', paddingRight: 195, fontSize: 30}}>Username</Text>
           <StatusBar style="auto" />
         
         {/*top black line*/}
@@ -50,7 +50,7 @@ const Username = ()=> {
 
           {/*next button*/}
           <View style = {{bottom: 50, paddingTop: 20}}>
-              <TouchableOpacity onPress = {() => Alert.alert('Next button has been pressed')}>
+              <TouchableOpacity onPress = {() => navigation.navigate('DietaryRestrictions')}>
                 <Text
                 style={{padding: 8, fontStyles: "Roboto", width: 300, height: 35, backgroundColor: '#C1BEBE', borderColor: 'black', borderWidth: 1 }}>
                 Next </Text>
@@ -72,7 +72,7 @@ const Username = ()=> {
           </View>
     
           <Text style = {{bottom: 75, right: 35 }}> Already have an account? </Text>
-          <TouchableOpacity onPress = {() => Alert.alert('LogIn Button has been pressed')} >
+          <TouchableOpacity onPress = {() => navigation.navigate('SignIn')} >
             <Text style = {{bottom: 92.5, left: 75, fontWeight: "bold"}}> Log In.</Text>
           </TouchableOpacity>
       
