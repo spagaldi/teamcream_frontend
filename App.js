@@ -5,14 +5,17 @@ import SignUp from './src/screens/SignUpScreen';
 import Username from './src/screens/UsernameScreen.js';
 import ResetPw from './src/screens/ResetPwScreen.js';
 import { StyleSheet, Text, Image, View, TextInput, TouchableOpacity, Alert } from 'react-native';
+import DietaryRestrictions from './src/screens/DietaryRestrictions.js';
 
 export default function App() {
   return (  
     // <ResetPw/>
-    <SignIn /> 
     // <SignUp />
+
+    // <SignIn /> 
+
     // <Username /> 
-  
+       <DietaryRestrictions />
   );
 }
 

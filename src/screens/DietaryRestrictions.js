@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity, Dimensions, Alert} from 'react-native';
+import { FontAwesome } from '@expo/vector-icons'; 
 
 const dimensions = Dimensions.get('window');
 const width = dimensions.width;
@@ -26,12 +27,17 @@ const styles = StyleSheet.create({
     text: {top: '30%', paddingLeft: 6, width: 100},
   });
 
+
+
+
 const DietaryRestrictions = () => {
     const [isSelected, setSelection] = useState(false);
+
+    
     return (
         <View style = {styles.canvas}>
 
-            [/*Header: please select all that Apply*/]
+            {/*Header: please select all that Apply*/}
             <View style={{top: height * .15}}>
                 <Text style = {{
                     fontWeight: "900",
@@ -42,28 +48,44 @@ const DietaryRestrictions = () => {
                 </Text>
             </View>
 
-            [/*Container of all the boxes*/]
+            {/*Container of all the boxes*/}
             <View style={{top: height * .20, backgroundColor: styles.canvas.backgroundColor, width: width - 40, height: height * .55, 
             flexDirection: "column"}}>
-                [/* Header of the container "Dietary Restriction" */]
+                {/* Header of the container "Dietary Restriction" */}
                 <Text style={{fontFamily: "Roboto", fontSize:20, fontWeight: "900"}}>Dietary Restrictions</Text>
 
-                [/* The boxes */]
+                
+                    {/* The boxes */}
                 <View style= {styles.boxes}>
+            
                     <Text style={styles.text}>Vegetarian?</Text>
+                        <View style={{alignItems: "flex-end", marginRight: width*.03, }}>
+                            <FontAwesome name="circle" size={14} color="red" />
+                        </View>
                 </View>
-
+            
+                
+            
                 <View style= {styles.boxes}>
+
                     <Text style={styles.text}>Dairy Free?</Text>
-                    <CheckBox/>
+                        <View style={{alignItems: "flex-end", marginRight: width*.03, }}>
+                            <FontAwesome name="circle" size={14} color="#00FF38" />
+                        </View>
                 </View>
 
                 <View style= {styles.boxes}>
                     <Text style={styles.text}>Vegan?</Text>
+                       <View style={{alignItems: "flex-end", marginRight: width*.03, }}>
+                            <FontAwesome name="circle" size={14} color="red" />
+                        </View>
                 </View>
 
                 <View style= {styles.boxes}>
                     <Text style={styles.text}>Gluten Free?</Text>
+                       <View style={{alignItems: "flex-end", marginRight: width*.03, }}>
+                            <FontAwesome name="circle" size={14} color="red" />
+                        </View>
                 </View>
 
             </View>
