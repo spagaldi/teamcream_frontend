@@ -4,6 +4,7 @@ import SignIn from './src/screens/SignInScreen';
 import Username from './src/screens/UsernameScreen';
 import ResetPw from './src/screens/ResetPwScreen';
 import DietaryRestrictions from './src/screens/DietaryRestrictions';
+import EmailSent from './src/screens/EmailSent';
 
 const navigator = createStackNavigator(
   {
@@ -11,6 +12,7 @@ const navigator = createStackNavigator(
     Username,
     ResetPw,
     DietaryRestrictions,
+    EmailSent,
   },
   {
     initialRouteName: 'SignIn',
