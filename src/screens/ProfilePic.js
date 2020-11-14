@@ -31,7 +31,7 @@ const ProfilePic = ({navigation}) => {
         <Image          
           resizeMode="contain"
           style={{ width: 0.75 * width, height: 0.3 * height }}
-          source={require('../../images/add_photo_icon_profile.png')}/>
+          source={require('../../images/add_photo_icon_profilepic.png')}/> 
 
         {/*Next Button*/}
         <TouchableOpacity style={{top: "1%"}} onPress={() => navigation.navigate('DietaryRestrictions')}>
@@ -51,8 +51,8 @@ const ProfilePic = ({navigation}) => {
         {/*Choose an Icon*/}
         <Text
            style={{
-              fontFamily: 'bold',
-              fontWeight: 500,
+            
+              
               top: "50%"
             }}
             >Choose an Icon
