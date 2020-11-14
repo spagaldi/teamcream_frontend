@@ -1,11 +1,30 @@
 import React from 'react';
 import { StyleSheet, Text, Image, View, Alert, Dimensions } from 'react-native';
+import axios from 'axios';
 
 const dimensions = Dimensions.get('window');
 const { width } = dimensions;
 const { height } = dimensions;
 
 const OAuth = () => {
+  const axiosGoogle = async() => {
+    await axios.create({
+      baseURL: 'http://10.0.2.2:3000',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    }).
+  get('/google')
+    .then(function (response) {
+      console.log('response');
+      console.log(response.data);
+      console.log(response.data.token);
+    })
+    .catch(function (error) {
+      console.log('error');
+      console.log(error);
+    });
+  }
   return (
     <View style={{ alignItems: 'center' }}>
       <View style={{ paddingTop: height * 0.012, flexDirection: 'row', alignItems: 'center' }}>
@@ -19,7 +38,7 @@ const OAuth = () => {
         <Image style={styles.googleLogo} source={require('../../images/google_logo.png')} />
         <Text
           style={{ paddingLeft: width * 0.012, color: 'blue' }}
-          onPress={() => Alert.alert('Google Button Pressed')}>
+          onPress={() => axiosGoogle()}>
           Connect with Google
         </Text>
       </View>

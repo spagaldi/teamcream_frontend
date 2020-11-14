@@ -74,7 +74,7 @@ const SignIn = ({ navigation }) => {
       <View style={styles.bottom}>
         <View style={{ flexDirection: 'row', paddingBottom: height * 0.01 }}>
           <Text>No Account? </Text>
-          <Text style={{ fontWeight: 'bold' }} onPress={() => Alert.alert('Sign up link pressed')}>
+          <Text style={{ fontWeight: 'bold' }} onPress={() => navigation.navigate('SignUp')}>
             Sign up
           </Text>
         </View>

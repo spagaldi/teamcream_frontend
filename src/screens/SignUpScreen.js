@@ -1,13 +1,49 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image, TextInput, Button, TextInputComponent, Alert, Dimensions } from 'react-native';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import OAuth from '../components/OAuth';
+import axios from 'axios'
 
 const dimensions = Dimensions.get('window');
 const width = dimensions.width;
 const height = dimensions.height;
 
-const SignUp = ()=>{
+
+const SignUp = ({navigation})=>{
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [token , setToken] = useState('');
+    const [error , setError] = useState('');
+
+    const SignUpAxios = async () => {
+       await axios.create({
+            baseURL: 'http://10.0.2.2:3000',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+          }).
+        post('/signup', {
+            email,
+            password
+          })
+          .then(function (response) {
+            console.log('response');
+            if(response.data.token){
+                setToken(response.data.token);
+                navigation.navigate('ProfilePic', {token: response.data.token});
+            }
+            response.data.error ? setError(response.data.error) : null;
+            console.log(response.data.error);
+            console.log(response.data.token);
+          })
+          .catch(function (error) {
+            console.log('error');
+            console.log(error);
+          });
+    }
+
+    console.log(email, password);
+
     return(
         <View style={styles.container}>
             <View style={styles.logo}>
@@ -15,15 +51,17 @@ const SignUp = ()=>{
             </View>
             <View style={styles.SignUpInput}>
                <Text style={styles.SignUpText}>Email Sign-Up</Text> 
-                <TextInput style={styles.inputBox} placeholder=' Enter Email or username'/>
-                <TextInput style={styles.inputBox} placeholder=' Enter Password'/>
+                <TextInput style={styles.inputBox} placeholder=' Enter Email or username' value={email} onChangeText={(newTerm)=>setEmail(newTerm)}/>
+                <TextInput style={styles.inputBox} placeholder=' Enter Password' value={password} onChangeText={(newTerm)=>setPassword(newTerm)} />
                 <Button
-                    onPress={() => Alert.alert('create account button pressed')}
+                    onPress={() => SignUpAxios()}
                    // style={styles.acctButton} 
                     title=" Create Account" 
                     color="#D9B580"
                     />
             </View>
+
+            {error? <Text>{error}</Text>: null}
             
             {/* LINE OR LINE */}
             <View style={{flex:0.2, flexDirection: 'row', alignItems: 'center'}}>
