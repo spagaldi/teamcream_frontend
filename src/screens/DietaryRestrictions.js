@@ -10,14 +10,21 @@ import {
   Dimensions,
   Alert,
 } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons'; 
+
 
 const dimensions = Dimensions.get('window');
 const { width } = dimensions;
 const { height } = dimensions;
 
 const DietaryRestrictions = () => {
-  const [isSelected, setSelection] = useState(false);
+  const[isVegetarian, setIsVegetarian] = useState(true);
+  const[isDairyfree, setIsDairyfree] = useState(true);
+  const[isVegan, setIsVegan] = useState(true);
+  const[isGlutenfree, setIsGlutenfree] = useState(true);
+
+
+
 
   return (
     <View style={styles.canvas}>
@@ -26,7 +33,7 @@ const DietaryRestrictions = () => {
         <Text
           style={{
             fontWeight: '900',
-            fontFamily: 'Roboto',
+            
             fontSize: 26,
             width: width - 30,
           }}>
@@ -45,39 +52,59 @@ const DietaryRestrictions = () => {
           flexDirection: 'column',
         }}>
         {/* Header of the container "Dietary Restriction" */}
-        <Text style={{ fontFamily: 'Roboto', fontSize: 20, fontWeight: '900' }}>
+        <Text style={{fontSize: 20, fontWeight: '900' }}>
           Dietary Restrictions
         </Text>
 
+
         {/* The boxes */}
-        <View style={styles.boxes}>
-          <Text style={styles.text}>Vegetarian?</Text>
-          <View style={{ alignItems: 'flex-end', marginRight: width * 0.03 }}>
-            <FontAwesome name="circle" size={14} color="red" />
-          </View>
-        </View>
+        <TouchableOpacity style = {styles.boxes}
+          onPress={() => setIsVegetarian(!isVegetarian)}>
+           <Text style={styles.text}>Vegetarian?</Text>
+           <View style={{top: "20%", position: "absolute", right: 0, marginRight: width * 0.03 }}>
+               <FontAwesome name="check-circle" size={24} color={isVegetarian? "green":"white"} />
+           </View>
+        </TouchableOpacity>
 
-        <View style={styles.boxes}>
-          <Text style={styles.text}>Dairy Free?</Text>
-          <View style={{ alignItems: 'flex-end', marginRight: width * 0.03 }}>
-            <FontAwesome name="circle" size={14} color="#00FF38" />
-          </View>
-        </View>
 
-        <View style={styles.boxes}>
-          <Text style={styles.text}>Vegan?</Text>
-          <View style={{ alignItems: 'flex-end', marginRight: width * 0.03 }}>
-            <FontAwesome name="circle" size={14} color="red" />
-          </View>
-        </View>
+        <TouchableOpacity style = {styles.boxes}
+          onPress={() => setIsDairyfree(!isDairyfree)}>
+           <Text style={styles.text}>Dairy Free?</Text>
+           <View style={{top: "20%", position: "absolute", right: 0, marginRight: width * 0.03 }}>
+               <FontAwesome name="check-circle" size={24} color={isDairyfree ? "green":"white"} />
+           </View>
+        </TouchableOpacity>
 
-        <View style={styles.boxes}>
-          <Text style={styles.text}>Gluten Free?</Text>
-          <View style={{ alignItems: 'flex-end', marginRight: width * 0.03 }}>
-            <FontAwesome name="circle" size={14} color="red" />
-          </View>
-        </View>
+
+        <TouchableOpacity style = {styles.boxes}
+          onPress={() => setIsVegan(!isVegan)}>
+           <Text style={styles.text}>Vegan?</Text>
+           <View style={{top: "20%", position: "absolute", right: 0, marginRight: width * 0.03 }}>
+               <FontAwesome name="check-circle" size={24} color={isVegan ? "green":"white"} />
+           </View>
+        </TouchableOpacity>
+
+ 
+        <TouchableOpacity style = {styles.boxes}
+          onPress={() => setIsGlutenfree(!isGlutenfree)}>
+           <Text style={styles.text}>Gluten Free?</Text>
+           <View style={{top: "20%", position: "absolute", right: 0, marginRight: width * 0.03 }}>
+               <FontAwesome name="check-circle" size={24} color={isGlutenfree ? "green":"white"} />
+           </View>
+        </TouchableOpacity>
+
       </View>
+      
+
+      {/* next and back button*/}
+        <TouchableOpacity style = {styles.button}
+          onPress={() => Alert.alert("help me")}>
+           <Text style={styles.text}>Vegetarian?</Text>
+           <View style={{top: "20%", position: "absolute", right: 0, marginRight: width * 0.03 }}>
+               <FontAwesome name="check-circle" size={24} color="green" />
+           </View>
+        </TouchableOpacity>
+
     </View>
   );
 };
@@ -92,6 +119,17 @@ const styles = StyleSheet.create({
   boxes: {
     backgroundColor: 'white',
     height: '10%',
+    marginTop: 10,
+    borderStyle: 'solid',
+    borderColor: 'black',
+    borderWidth: 2,
+    borderRadius: 3,
+    marginBottom: 30,
+  },
+
+  button: {
+    backgroundColor: 'white',
+    height: '5%',
     marginTop: 10,
     borderStyle: 'solid',
     borderColor: 'black',
