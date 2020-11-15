@@ -1,46 +1,55 @@
+//Android Client ID 1082251707964-3q24citcdtoeo8a7l1rapuc5v5ptvggd.apps.googleusercontent.com
+//IOS CLient ID 1082251707964-qu924lu7cj0hcbtu6t7ppq23nb3c9b43.apps.googleusercontent.com
+
 import React from 'react';
-import { StyleSheet, Text, Image, View, Alert, Dimensions } from 'react-native';
-import axios from 'axios';
+import { StyleSheet, Text, Image, View, Alert, Dimensions, TouchableOpacity } from 'react-native';
+import * as Google from 'expo-google-app-auth';
 
 const dimensions = Dimensions.get('window');
 const { width } = dimensions;
 const { height } = dimensions;
 
-const OAuth = () => {
-  const axiosGoogle = async() => {
-    await axios.create({
-      baseURL: 'http://10.0.2.2:3000',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    }).
-  get('/google')
-    .then(function (response) {
-      console.log('response');
-      console.log(response.data);
-      console.log(response.data.token);
-    })
-    .catch(function (error) {
-      console.log('error');
-      console.log(error);
-    });
+const OAuth =  () => {
+  const signInGoogle = async() => {
+    try{
+      const { type, accessToken, user } = await Google.logInAsync({
+        iosClientId: `1082251707964-qu924lu7cj0hcbtu6t7ppq23nb3c9b43.apps.googleusercontent.com`,
+        androidClientId: `1082251707964-3q24citcdtoeo8a7l1rapuc5v5ptvggd.apps.googleusercontent.com`,
+        iosStandaloneAppClientId: `1082251707964-qu924lu7cj0hcbtu6t7ppq23nb3c9b43.apps.googleusercontent.com`,
+        androidStandaloneAppClientId: `1082251707964-3q24citcdtoeo8a7l1rapuc5v5ptvggd.apps.googleusercontent.com`,
+        scopes: ['profile' , 'email']
+      });
+      
+      if (type === 'success') {
+        console.log('success')
+        /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
+        console.log(accessToken);
+        console.log(user);
+      }
+    }catch(err){
+      console.log(err);
+    }
   }
+
   return (
     <View style={{ alignItems: 'center' }}>
       <View style={{ paddingTop: height * 0.012, flexDirection: 'row', alignItems: 'center' }}>
         <Image style={styles.facebookLogo} source={require('../../images/facebook_logo.png')} />
-        <Text style={{ color: 'blue' }} onPress={() => Alert.alert('Facebook Button Pressed')}>
+        <TouchableOpacity onPress={() => Alert.alert('Facebook Button Pressed')}>
+        <Text style={{ color: 'blue' }} >
           Connect with Facebook
         </Text>
+        </TouchableOpacity>
       </View>
 
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Image style={styles.googleLogo} source={require('../../images/google_logo.png')} />
+        <TouchableOpacity onPress={() => signInGoogle()}>
         <Text
-          style={{ paddingLeft: width * 0.012, color: 'blue' }}
-          onPress={() => axiosGoogle()}>
+          style={{ paddingLeft: width * 0.012, color: 'blue' }} >
           Connect with Google
         </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
