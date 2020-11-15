@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, Button, TextInputComponent, Alert, Dimensions } from 'react-native';
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 import OAuth from '../components/OAuth';
 
 const dimensions = Dimensions.get('window');
@@ -9,36 +10,40 @@ const height = dimensions.height;
 
 const SignUp = ()=>{
     return(
-        <View style={styles.container}>
-            <View style={styles.logo}>
-                <Image source = {require('../../images/cwc_logo_simple.png') }  style={styles.CWCLogo}/>
-            </View>
-            <View style={styles.SignUpInput}>
-               <Text style={styles.SignUpText}>Email Sign-Up</Text> 
-                <TextInput style={styles.inputBox} placeholder=' Enter Email or username'/>
-                <TextInput style={styles.inputBox} placeholder=' Enter Password'/>
-                <Button
-                    onPress={() => Alert.alert('create account button pressed')}
-                   // style={styles.acctButton} 
-                    title=" Create Account" 
-                    color="#D9B580"
-                    />
-            </View>
-            
-            {/* LINE OR LINE */}
-            <View style={{flex:0.2, flexDirection: 'row', alignItems: 'center'}}>
-                <View style={styles.line}/>
-                <View>
-                    <Text style={{width: width*.1, textAlign: 'center'}}>OR</Text>
+        <KeyboardAwareScrollView 
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        contentContainerStyle={styles.container}
+        scrollEnabled={false}>
+                <View style={styles.logo}>
+                    <Image source = {require('../../images/cwc_logo_simple.png') }  style={styles.CWCLogo}/>
                 </View>
-                <View style={styles.line}/>
-            </View>
+                <View style={styles.SignUpInput}>
+                <Text style={styles.SignUpText}>Email Sign-Up</Text> 
+                    <TextInput style={styles.inputBox} placeholder=' Enter Email or username'/> 
+                    {/* Check if valid password */}
+                    <TextInput style={styles.inputBox} placeholder=' Enter Password'/>
+                    <Button
+                        onPress={() => Alert.alert('create account button pressed')}
+                    // style={styles.acctButton} 
+                        title=" Create Account" 
+                        color="#D9B580"
+                        />
+                </View>
+                
+                {/* LINE OR LINE */}
+                <View style={{flex:0.2, flexDirection: 'row', alignItems: 'center'}}>
+                    <View style={styles.line}/>
+                    <View>
+                        <Text style={{width: width*.1, textAlign: 'center'}}>OR</Text>
+                    </View>
+                    <View style={styles.line}/>
+                </View>
 
-            {/* Facebook and google OAuth*/}
-            <View style={styles.OAuth}>
-                <OAuth/>
-            </View>
-        </View>
+                {/* Facebook and google OAuth*/}
+                <View style={styles.OAuth}>
+                    <OAuth/>
+                </View>
+        </KeyboardAwareScrollView>
     );
 };
 
@@ -47,7 +52,8 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 30,
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        minHeight: height
     },
     logo:{ 
         flex: 0.4,
