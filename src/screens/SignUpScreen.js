@@ -51,8 +51,10 @@ const SignUp = ({navigation})=>{
             </View>
             <View style={styles.SignUpInput}>
                <Text style={styles.SignUpText}>Email Sign-Up</Text> 
-                <TextInput style={styles.inputBox} placeholder=' Enter Email or username' value={email} onChangeText={(newTerm)=>setEmail(newTerm)}/>
-                <TextInput style={styles.inputBox} placeholder=' Enter Password' value={password} onChangeText={(newTerm)=>setPassword(newTerm)} />
+                <TextInput style={styles.inputBox} placeholder=' Enter Email or username' 
+                    value={email} onChangeText={(newTerm)=>setEmail(newTerm)}/>
+                <TextInput style={styles.inputBox} placeholder=' Enter Password' 
+                    value={password} onChangeText={(newTerm)=>setPassword(newTerm)} />
                 <Button
                     onPress={() => SignUpAxios()}
                    // style={styles.acctButton} 

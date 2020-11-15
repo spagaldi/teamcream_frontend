@@ -14,7 +14,7 @@ const dimensions = Dimensions.get('window');
 const { width } = dimensions;
 const { height } = dimensions;
 
-const ResetPw = () => {
+const ResetPw = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={{ alignItems: 'center' }}>
@@ -36,7 +36,8 @@ const ResetPw = () => {
       </View>
       <View style={{ alignItems: 'center', flexDirection: 'row' }}>
         <Text>Already have an account? </Text>
-        <Text style={{ fontWeight: 'bold' }}>Log In.</Text>
+        
+        <Text style={{ fontWeight: 'bold' }} onPress={() => navigation.navigate('SignIn')}> Log In.</Text>
       </View>
     </View>
   );

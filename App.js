@@ -16,7 +16,7 @@ const navigator = createStackNavigator(
     ResetPw,
     DietaryRestrictions,
     EmailSent,
-    ProfilePic
+    ProfilePic,
   },
   {
     initialRouteName: 'SignIn',

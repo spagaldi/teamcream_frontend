@@ -1,6 +1,6 @@
-import React from 'react';
-import {
-  StyleSheet,
+import React, {useState} from 'react';
+import axios from 'axios'
+import {StyleSheet,
   Text,
   Image,
   View,
@@ -29,7 +29,7 @@ const SignIn = ({ navigation }) => {
            'Content-Type': 'application/json'
          },
        }).
-      post('/signin', {
+      post('/login', {
          email,
          password
         })
@@ -68,12 +68,15 @@ const SignIn = ({ navigation }) => {
             */}
       {/* ENTER EMAIL BOX */}
       <View>
-        <TextInput style={styles.textInputStyle} placeholder=" Enter email or username" />
+        <TextInput style={styles.textInputStyle} placeholder=" Enter email or username" 
+        value={email} onChangeText={(newTerm)=>setEmail(newTerm)}  />
       </View>
 
       {/* ENTER PASSWORD BOX */}
       <View style={{ paddingTop: height * 0.025, paddingBottom: height * 0.012 }}>
-        <TextInput style={styles.textInputStyle} placeholder=" Enter password" />
+        <TextInput style={styles.textInputStyle} placeholder=" Enter password" 
+          value={password} onChangeText={(newTerm)=>setPassword(newTerm)}
+        />
         <View style={{ alignItems: 'center' }}>
           <TouchableOpacity onPress={() => SignInAxios()}>
             {/* <Image source={require('../../images/submit.png')}
@@ -113,7 +116,7 @@ const SignIn = ({ navigation }) => {
         {/* Forgot Password */}
         <Text
           style={{ fontWeight: 'bold' }}
-          onPress={() => Alert.alert('Forgot password link pressed')}>
+          onPress={() => navigation.navigate('ResetPw')}>
           Forgot Password?
         </Text>
       </View>
