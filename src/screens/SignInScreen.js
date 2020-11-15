@@ -75,6 +75,7 @@ const SignIn = ({ navigation }) => {
       {/* ENTER PASSWORD BOX */}
       <View style={{ paddingTop: height * 0.025, paddingBottom: height * 0.012 }}>
         <TextInput style={styles.textInputStyle} placeholder=" Enter password" 
+          secureTextEntry={true}
           value={password} onChangeText={(newTerm)=>setPassword(newTerm)}
         />
         <View style={{ alignItems: 'center' }}>
