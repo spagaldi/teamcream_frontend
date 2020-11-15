@@ -17,6 +17,38 @@ const { width } = dimensions;
 const { height } = dimensions;
 
 const SignIn = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [token, setToken] = useState('');
+  const [error, setError] = useState('');
+
+  const SignInAxios = async () => {
+    await axios.create({
+         baseURL: 'http://10.0.2.2:3000',
+         headers: {
+           'Content-Type': 'application/json'
+         },
+       }).
+      post('/signin', {
+         email,
+         password
+        })
+        .then(function (response) {
+          console.log('response');
+          if(response.data.token){
+            setToken(response.data.token);
+            // add a boolean value in backend to check if user already has a profile
+            navigation.navigate('ProfilePic', {token: response.data.token});
+          }
+          response.data.error ? setError(response.data.error) : null;
+          console.log(response.data.error);
+          console.log(response.data.token);
+        })
+        .catch(function (error){
+          console.log('error');
+          console.log(error);
+        });
+ }
   return (
     <View style={styles.container}>
       <View style={{ marginTop: height * 0.05, marginBottom: height * 0.05 }}>
@@ -43,7 +75,7 @@ const SignIn = ({ navigation }) => {
       <View style={{ paddingTop: height * 0.025, paddingBottom: height * 0.012 }}>
         <TextInput style={styles.textInputStyle} placeholder=" Enter password" />
         <View style={{ alignItems: 'center' }}>
-          <TouchableOpacity onPress={() => navigation.navigate('Username')}>
+          <TouchableOpacity onPress={() => SignInAxios()}>
             {/* <Image source={require('../../images/submit.png')}
                         style={{ width: width*.08, height: height*.08 }}/> */}
             <Entypo name="arrow-bold-right" size={36} color="black" />
