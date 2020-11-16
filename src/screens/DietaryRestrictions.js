@@ -81,9 +81,9 @@ const DietaryRestrictions = ({ navigation }) => {
       </View>
 
       {/* next and back button */}
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ProfilePic')}>
+      {/*<TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ProfilePic')}>
         <Text style={styles.buttontext}>Next</Text>
-      </TouchableOpacity>
+      </TouchableOpacity>*/}
     </View>
   );
 };
