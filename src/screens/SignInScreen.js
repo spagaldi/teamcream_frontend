@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import OAuth from '../components/OAuth';
+import DietaryRestrictions from './DietaryRestrictions';
 
 const dimensions = Dimensions.get('window');
 const { width } = dimensions;
@@ -87,8 +88,15 @@ const SignIn = ({ navigation }) => {
           value={password}
           onChangeText={(newTerm) => setPassword(newTerm)}
         />
+<<<<<<< HEAD
         {/* <View style={{ alignItems: 'center', paddingTop: height*0.01 }}>
           <TouchableOpacity onPress={() => SignInAxios()}>
+=======
+        <View style={{ alignItems: 'center' }}>
+          <TouchableOpacity onPress={() => navigation.navigate('ProfilePic')}>
+            {/* <Image source={require('../../images/submit.png')}
+                        style={{ width: width*.08, height: height*.08 }}/> */}
+>>>>>>> c93f9c1f43fe37c5da9cbce948575ea3abdbf45d
             <Entypo name="arrow-bold-right" size={36} color="black" />
           </TouchableOpacity>
         </View> */}
