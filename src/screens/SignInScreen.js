@@ -7,7 +7,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Alert,
+  Button,
   Dimensions,
 } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
@@ -87,13 +87,25 @@ const SignIn = ({ navigation }) => {
           value={password}
           onChangeText={(newTerm) => setPassword(newTerm)}
         />
-        <View style={{ alignItems: 'center' }}>
+        {/* <View style={{ alignItems: 'center', paddingTop: height*0.01 }}>
           <TouchableOpacity onPress={() => SignInAxios()}>
-            {/* <Image source={require('../../images/submit.png')}
-                        style={{ width: width*.08, height: height*.08 }}/> */}
             <Entypo name="arrow-bold-right" size={36} color="black" />
           </TouchableOpacity>
-        </View>
+        </View> */}
+      </View>
+
+      <View style ={{
+              borderColor: 'black',
+              borderWidth: 1,
+              borderRadius: 3,
+        }}>
+        <Button   
+            onPress={() => SignInAxios()}
+            // style={styles.acctButton}
+            title=" Create Account"
+            color="#D9B580"
+            
+          />
       </View>
 
       {/* LINE OR LINE */}
@@ -145,9 +157,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textInputStyle: {
+    paddingLeft: width * 0.02,
     width: width * 0.8,
     height: height * 0.052,
-    backgroundColor: '#D9B580',
+    backgroundColor: '#FFFFFF',
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 3,
