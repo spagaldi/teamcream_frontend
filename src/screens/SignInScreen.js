@@ -88,9 +88,6 @@ const SignIn = ({ navigation }) => {
           value={password}
           onChangeText={(newTerm) => setPassword(newTerm)}
         />
-            <Entypo name="arrow-bold-right" size={36} color="black" />
-          </TouchableOpacity>
-        </View> */}
       </View>
 
       <View style ={{
@@ -101,7 +98,7 @@ const SignIn = ({ navigation }) => {
         <Button   
             onPress={() => SignInAxios()}
             // style={styles.acctButton}
-            title=" Create Account"
+            title="Login"
             color="#D9B580"
             
           />
