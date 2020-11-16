@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
   textInputStyle: {
     width: width * 0.8,
     height: height * 0.052,
+    paddingLeft: width * 0.02,
     backgroundColor: '#FFFFFF',
     borderColor: 'black',
     borderWidth: 1,
