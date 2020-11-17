@@ -24,7 +24,7 @@ const ProfilePic = ({ navigation }) => {
     <View style={styles.canvas}>
       {/* Profilepic img */}
       <Image
-        resizeMode="contain"
+        resizeMode="cover"
         style={{backgroundColor: "white", width: 0.55 * width, height: 0.25 * height, borderRadius: 400/2, borderColor: "black", borderWidth: 2}}
         source={profilePicture}
       />
@@ -42,7 +42,6 @@ const ProfilePic = ({ navigation }) => {
             borderColor: 'black',
             borderWidth: 1,
             textAlign: "center",
-            lineHeight: "30",
           }}>
           Next
         </Text>
