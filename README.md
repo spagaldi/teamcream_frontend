@@ -31,19 +31,19 @@
     2. Git clone <repo>
         * Npm install
 2. Create branch or move into your own branch
-  2. (new) git checkout -b <branchname>
-  2. (existing) git checkout <branchname>
+    1. (new) git checkout -b <branchname>
+    2. (existing) git checkout <branchname>
 3. Merge your existing branch with master
-  3. (new branch) you dont need to do anything
-  3. (existing) git merge main
+    1. (new branch) you dont need to do anything
+    2. (existing) git merge main
     3. Fix conflicts
 4. Now you are ready to code. Do tasking, once you finish working on a page
-  4. Git add .
-  4. Git commit -m “msg”
-  4. Rinse n repeat go back to step 4 each time you work on a new page
+    1. Git add .
+    2. Git commit -m “msg”
+    3. Rinse n repeat go back to step 4 each time you work on a new page
 5. Once you have finished your tasking
-  5. Make sure you are on your branch
-  5. Git push
+    1. Make sure you are on your branch
+    2. Git push
 6. Before code review or if everything is done
-  6. Go to github, and do a pull request
+    1. Go to github, and do a pull request
 
