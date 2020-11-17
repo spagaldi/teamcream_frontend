@@ -27,9 +27,9 @@
 **Normal Workflow:**
 1. Get up to date repo on your local device
   1. Git pull
-    1. Npm install
+        Npm install
   1. Git clone <repo>
-    1. Npm install
+        Npm install
 2. Create branch or move into your own branch
   2. (new) git checkout -b <branchname>
   2. (existing) git checkout <branchname>
