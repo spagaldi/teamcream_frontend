@@ -57,16 +57,16 @@ const SignUp = ({ navigation }) => {
   console.log(email, password);
 
   return (
-    <KeyboardAwareScrollView 
-    resetScrollToCoords={{ x: 0, y: 0 }}
-    contentContainerStyle={styles.container}
-    scrollEnabled={false}>
+    <KeyboardAwareScrollView
+      resetScrollToCoords={{ x: 0, y: 0 }}
+      contentContainerStyle={styles.container}
+      scrollEnabled={false}>
       <View style={styles.logo}>
         <Image source={require('../../images/cwc_logo_simple.png')} style={styles.CWCLogo} />
       </View>
       <View style={styles.SignUpInput}>
         <Text style={styles.SignUpText}>Email Sign-Up</Text>
-        
+
         {/* Enter Email */}
         <TextInput
           style={styles.inputBox}
@@ -97,7 +97,7 @@ const SignUp = ({ navigation }) => {
       {/* LINE OR LINE */}
       <View style={{ flex: 0.2, flexDirection: 'row', alignItems: 'center' }}>
         <View style={styles.line} />
-        <View style={{marginTop: '10%'}}> 
+        <View style={{ marginTop: '10%' }}>
           <Text style={{ width: width * 0.1, textAlign: 'center' }}>OR</Text>
           {/* <Text style={styles.line}>OR</Text> */}
         </View>
@@ -157,8 +157,7 @@ const styles = StyleSheet.create({
     flex: 0.5,
     height: height * 0.002,
     backgroundColor: 'black',
-    marginTop: '10%'
-
+    marginTop: '10%',
   },
   OAuth: {
     justifyContent: 'center',
