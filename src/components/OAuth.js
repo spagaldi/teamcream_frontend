@@ -30,10 +30,10 @@ const OAuth = ({ navigation }) => {
         console.log(accessToken);
         console.log(user);
 
-        navigation.navigate('Home');
-
         // TODO!
         // Call backend, send email to them... they either create a new user or return existing user json web token
+
+        navigation.navigate('Home');
       }
     } catch (err) {
       console.log(err);
@@ -41,8 +41,8 @@ const OAuth = ({ navigation }) => {
   };
 
   return (
-    <View style={{ alignItems: 'center' }}>
-      <View style={{ paddingTop: height * 0.012, flexDirection: 'row', alignItems: 'center' }}>
+    <View style={{ flex: 1, alignItems: 'center' }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         <Image style={styles.facebookLogo} source={require('../../images/facebook_logo.png')} />
         <TouchableOpacity onPress={() => Alert.alert('Facebook Button Pressed')}>
           <Text style={{ color: 'blue' }}>Connect with Facebook</Text>

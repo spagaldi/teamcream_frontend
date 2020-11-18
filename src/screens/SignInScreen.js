@@ -7,6 +7,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  TouchableHighlight,
   Button,
   Dimensions,
 } from 'react-native';
@@ -54,85 +55,53 @@ const SignIn = ({ navigation }) => {
   };
   return (
     <View style={styles.container}>
-      <View style={{ marginTop: height * 0.05, marginBottom: height * 0.05 }}>
+      <View style={styles.imageContainer}>
         <Image
           resizeMode="contain"
-          style={{ width: 0.75 * width, height: 0.3 * height }}
-          source={require('../../images/crumbs_logo.png')}
+          style={styles.logoStyle}
+          source={require('../../images/crumbs_logo2.png')}
         />
       </View>
+      <TextInput
+        style={styles.textInputStyle}
+        placeholder=" Enter email or username"
+        value={email}
+        onChangeText={(newTerm) => setEmail(newTerm)}
+      />
+      <TextInput
+        style={styles.textInputStyle}
+        placeholder=" Enter password"
+        secureTextEntry
+        value={password}
+        onChangeText={(newTerm) => setPassword(newTerm)}
+      />
 
-      {/* Sign in */}
-      {/*
-            <View style={{padding: height*.03}}>
-            <Text>Sign up!</Text> 
-                <StatusBar style="auto" />
-            </View>
-            */}
-      {/* ENTER EMAIL BOX */}
-      <View>
-        <TextInput
-          style={styles.textInputStyle}
-          placeholder=" Enter email or username"
-          value={email}
-          onChangeText={(newTerm) => setEmail(newTerm)}
-        />
-      </View>
-
-      {/* ENTER PASSWORD BOX */}
-      <View style={{ paddingTop: height * 0.025, paddingBottom: height * 0.012 }}>
-        <TextInput
-          style={styles.textInputStyle}
-          placeholder=" Enter password"
-          secureTextEntry
-          value={password}
-          onChangeText={(newTerm) => setPassword(newTerm)}
-        />
-      </View>
-
-      <View
-        style={{
-          borderColor: 'black',
-          borderWidth: 1,
-          borderRadius: 3,
-        }}>
-        <Button
-          onPress={() => SignInAxios()}
-          // style={styles.acctButton}
-          title="Login"
-          color="#D9B580"
-        />
-      </View>
+      <TouchableHighlight style={styles.loginButtonWrapper}>
+        <Button onPress={() => SignInAxios()} title="Login" color="#D9B580" />
+      </TouchableHighlight>
 
       {/* LINE OR LINE */}
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <View
-          style={{ flex: 1, height: height * 0.003, backgroundColor: 'black', marginLeft: '5%' }}
-        />
+      <View style={styles.lineOrLine}>
+        <View style={styles.leftLine} />
         <View>
-          <Text style={{ width: width * 0.1, textAlign: 'center' }}>OR</Text>
+          <Text style={styles.or}>OR</Text>
         </View>
-        <View
-          style={{ flex: 1, height: height * 0.003, backgroundColor: 'black', marginRight: '5%' }}
-        />
+        <View style={styles.rightLine} />
       </View>
-
-      <View style={{ alignItems: 'center' }} />
 
       {/* Facebook and google OAuth */}
       <OAuth />
 
       {/* SIGN UP */}
-
-      <View style={styles.bottom}>
-        <View style={{ flexDirection: 'row', paddingBottom: height * 0.01 }}>
+      <View style={styles.accountWrapper}>
+        <View style={styles.noAccount}>
           <Text>No Account? </Text>
-          <Text style={{ fontWeight: 'bold' }} onPress={() => navigation.navigate('SignUp')}>
+          <Text style={styles.textWeight} onPress={() => navigation.navigate('SignUp')}>
             Sign up
           </Text>
         </View>
         {/* Forgot Password */}
-        <Text style={{ fontWeight: 'bold' }} onPress={() => navigation.navigate('ResetPw')}>
+        <Text style={styles.textWeight} onPress={() => navigation.navigate('ResetPw')}>
           Forgot Password?
         </Text>
       </View>
@@ -144,23 +113,65 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FEF4D1',
-    alignItems: 'center',
   },
-  bottom: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    marginBottom: height * 0.05,
+  imageContainer: {
+    marginVertical: 15,
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoStyle: {
+    width: 0.8 * width,
+    height: 0.375 * height,
   },
   textInputStyle: {
     paddingLeft: width * 0.02,
-    width: width * 0.8,
+    width: width * 0.76,
     height: height * 0.052,
     backgroundColor: '#FFFFFF',
     borderColor: 'black',
     borderWidth: 1,
     borderRadius: 3,
+    marginBottom: 15,
+    flexDirection: 'row',
+    marginHorizontal: width * 0.12,
   },
+  loginButtonWrapper: {
+    marginHorizontal: width * 0.12,
+    width: width * 0.76,
+    height: height * 0.052,
+    justifyContent: 'center',
+    marginBottom: 15,
+  },
+  lineOrLine: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  leftLine: {
+    flex: 1,
+    height: height * 0.003,
+    backgroundColor: 'black',
+    marginLeft: '12%',
+  },
+  or: {
+    width: width * 0.1,
+    textAlign: 'center',
+  },
+  rightLine: {
+    flex: 1,
+    height: height * 0.003,
+    backgroundColor: 'black',
+    marginRight: '12%',
+  },
+  accountWrapper: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  noAccount: {
+    flexDirection: 'row',
+    marginBottom: height * 0.01,
+  },
+  textWeight: { fontWeight: 'bold' },
 });
 
 export default SignIn;

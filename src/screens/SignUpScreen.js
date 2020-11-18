@@ -28,7 +28,7 @@ const SignUp = ({ navigation }) => {
   const SignUpAxios = async () => {
     await axios
       .create({
-        baseURL: 'http://localhost:3000',
+        baseURL: 'http://10.0.2.2:3000',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -161,7 +161,6 @@ const styles = StyleSheet.create({
   },
   OAuth: {
     justifyContent: 'center',
-    paddingBottom: '20%',
   },
 });
 
