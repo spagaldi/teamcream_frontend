@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import {
   StyleSheet,
   Text,
   Image,
   View,
   TextInput,
-  TouchableOpacity,
   TouchableHighlight,
   Button,
   Dimensions,
+  ActivityIndicator,
 } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
 import OAuth from '../components/OAuth';
-import DietaryRestrictions from './DietaryRestrictions';
+import axiosWithoutToken from '../api/axiosWithoutToken';
+import useValidation from '../hooks/useValidation';
 
 const dimensions = Dimensions.get('window');
 const { width } = dimensions;
@@ -22,37 +21,41 @@ const { height } = dimensions;
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [token, setToken] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const [validateInputs] = useValidation();
 
   const SignInAxios = async () => {
-    await axios
-      .create({
-        baseURL: 'http://10.0.2.2:3000',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
+    setLoading(true);
+    await axiosWithoutToken
       .post('/login', {
         email,
         password,
       })
       .then(function (response) {
-        console.log('response');
+        setLoading(false);
         if (response.data.token) {
-          setToken(response.data.token);
-          // add a boolean value in backend to check if user already has a profile
           navigation.navigate('Home', { token: response.data.token });
         }
+
+        // Set banner for 5 seconds and erase text inputs
+        if (response.data.error) {
+          setError(response.data.error);
+          setEmail('');
+          setPassword('');
+          setTimeout(() => {
+            setError('');
+          }, 5000);
+        }
         response.data.error ? setError(response.data.error) : null;
-        console.log(response.data.error);
-        console.log(response.data.token);
       })
       .catch(function (error) {
         console.log('error');
         console.log(error);
       });
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -77,8 +80,21 @@ const SignIn = ({ navigation }) => {
       />
 
       <TouchableHighlight style={styles.loginButtonWrapper}>
-        <Button onPress={() => SignInAxios()} title="Login" color="#D9B580" />
+        <Button
+          onPress={() =>
+            validateInputs(email, password, setEmail, setPassword, setError) ? SignInAxios() : null
+          }
+          title="Login"
+          color="#D9B580"
+        />
       </TouchableHighlight>
+
+      {loading ? <ActivityIndicator size="large" color="#0000ff" /> : null}
+      {error ? (
+        <View style={styles.error}>
+          <Text style={styles.errorText}>{error}</Text>
+        </View>
+      ) : null}
 
       {/* LINE OR LINE */}
       <View style={styles.lineOrLine}>
@@ -135,6 +151,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     flexDirection: 'row',
     marginHorizontal: width * 0.12,
+    fontSize: 14,
   },
   loginButtonWrapper: {
     marginHorizontal: width * 0.12,
@@ -143,6 +160,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 15,
   },
+  error: {
+    flexDirection: 'row',
+    backgroundColor: '#D44B4B',
+    marginHorizontal: width * 0.12,
+    width: width * 0.76,
+    height: height * 0.052,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 15,
+  },
+  errorText: { color: 'white' },
   lineOrLine: {
     flexDirection: 'row',
     alignItems: 'center',

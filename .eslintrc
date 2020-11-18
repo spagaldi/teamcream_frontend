@@ -9,6 +9,8 @@
       "eslint-plugin-react"
     ],
     "rules": {
+      "no-useless-escape": 0,
+      "func-names": 0,
       "no-shadow": 0,
       "no-unused-expressions": 0,
       "allowTernary": 0,
