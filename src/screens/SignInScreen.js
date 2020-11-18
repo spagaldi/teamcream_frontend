@@ -41,7 +41,7 @@ const SignIn = ({ navigation }) => {
         if (response.data.token) {
           setToken(response.data.token);
           // add a boolean value in backend to check if user already has a profile
-          navigation.navigate('ProfilePic', { token: response.data.token });
+          navigation.navigate('Home', { token: response.data.token });
         }
         response.data.error ? setError(response.data.error) : null;
         console.log(response.data.error);

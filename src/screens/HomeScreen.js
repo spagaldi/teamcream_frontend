@@ -17,20 +17,29 @@ const HomeScreen = () => {
 
   return (
     <>
-      <SearchBar
+      {/* <SearchBar
         term={term}
         onTermChange={(newTerm) => setTerm(newTerm)}
         onTermSubmit={() => searchApi(term)}
-      />
-      {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <ScrollView>
-        <RecipeList title="Welcome Back!" results={filterResultsByPrice('$')} />
-        <RecipeList title="Continue where you left off!" results={filterResultsByPrice('$$')} />
-        <RecipeList title="What you can make right now!" results={filterResultsByPrice('$$$')} />
-        <RecipeList title="Popular!" results={filterResultsByPrice('$$$')} />
-      </ScrollView>
+      /> */}
+      <View style={styles.container}>
+        {errorMessage ? <Text>{errorMessage}</Text> : null}
+        <ScrollView>
+          <RecipeList title="Welcome Back!" results={filterResultsByPrice('$')} />
+          <RecipeList title="Continue where you left off!" results={filterResultsByPrice('$$')} />
+          <RecipeList title="What you can make right now!" results={filterResultsByPrice('$$$')} />
+          <RecipeList title="Popular!" results={filterResultsByPrice('$$$')} />
+        </ScrollView>
+      </View>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 10,
+    backgroundColor: '#FEF4D1',
+  },
+});
 
 export default HomeScreen;

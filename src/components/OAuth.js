@@ -3,13 +3,14 @@
 
 import React from 'react';
 import { StyleSheet, Text, Image, View, Alert, Dimensions, TouchableOpacity } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import * as Google from 'expo-google-app-auth';
 
 const dimensions = Dimensions.get('window');
 const { width } = dimensions;
 const { height } = dimensions;
 
-const OAuth = () => {
+const OAuth = ({ navigation }) => {
   const signInGoogle = async () => {
     try {
       const { type, accessToken, user } = await Google.logInAsync({
@@ -28,6 +29,8 @@ const OAuth = () => {
         /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
         console.log(accessToken);
         console.log(user);
+
+        navigation.navigate('Home');
 
         // TODO!
         // Call backend, send email to them... they either create a new user or return existing user json web token
@@ -69,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OAuth;
+export default withNavigation(OAuth);

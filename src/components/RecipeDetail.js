@@ -26,6 +26,9 @@ const styles = StyleSheet.create({
   },
   container: {
     marginLeft: 15,
+    borderBottomWidth: 1,
+    borderColor: 'black',
+    borderRadius: 4,
   },
 });
 
