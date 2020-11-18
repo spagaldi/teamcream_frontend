@@ -28,7 +28,7 @@ const SignUp = ({ navigation }) => {
   const SignUpAxios = async () => {
     await axios
       .create({
-        baseURL: 'http://10.0.2.2:3000',
+        baseURL: 'http://localhost:3000',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -114,14 +114,14 @@ const SignUp = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
+    // flex: 1,
     padding: 30,
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   logo: {
     flex: 0.4,
-   // justifyContent: 'flex-start',
+    // justifyContent: 'flex-start',
     flexDirection: 'row',
     right: width * 0.3,
   },
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     borderColor: 'black',
     borderWidth: 0.5,
-   // marginTop: '10%',
+    // marginTop: '10%',
     marginBottom: '5%',
     height: '20%',
   },

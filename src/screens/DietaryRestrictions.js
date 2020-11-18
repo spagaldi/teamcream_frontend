@@ -10,8 +10,7 @@ import {
   Dimensions,
   Alert,
 } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 
 const dimensions = Dimensions.get('window');
 const { width } = dimensions;
@@ -54,36 +53,52 @@ const DietaryRestrictions = ({ navigation }) => {
         <TouchableOpacity style={styles.boxes} onPress={() => setIsVegetarian(!isVegetarian)}>
           <Text style={styles.text}>Vegetarian?</Text>
           <View style={{ top: '20%', position: 'absolute', right: 0, marginRight: width * 0.03 }}>
-            <MaterialIcons name={isVegetarian?"check-box" : "check-box-outline-blank"} size={24} color="black" />
+            <MaterialIcons
+              name={isVegetarian ? 'check-box' : 'check-box-outline-blank'}
+              size={24}
+              color="black"
+            />
           </View>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.boxes} onPress={() => setIsDairyfree(!isDairyfree)}>
           <Text style={styles.text}>Dairy Free?</Text>
           <View style={{ top: '20%', position: 'absolute', right: 0, marginRight: width * 0.03 }}>
-            <MaterialIcons name={isDairyfree?"check-box" : "check-box-outline-blank"} size={24} color="black" />
+            <MaterialIcons
+              name={isDairyfree ? 'check-box' : 'check-box-outline-blank'}
+              size={24}
+              color="black"
+            />
           </View>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.boxes} onPress={() => setIsVegan(!isVegan)}>
           <Text style={styles.text}>Vegan?</Text>
           <View style={{ top: '20%', position: 'absolute', right: 0, marginRight: width * 0.03 }}>
-            <MaterialIcons name={isVegan?"check-box" : "check-box-outline-blank"} size={24} color="black" />
+            <MaterialIcons
+              name={isVegan ? 'check-box' : 'check-box-outline-blank'}
+              size={24}
+              color="black"
+            />
           </View>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.boxes} onPress={() => setIsGlutenfree(!isGlutenfree)}>
           <Text style={styles.text}>Gluten Free?</Text>
           <View style={{ top: '20%', position: 'absolute', right: 0, marginRight: width * 0.03 }}>
-            <MaterialIcons name={isGlutenfree?"check-box" : "check-box-outline-blank"} size={24} color="black" />
+            <MaterialIcons
+              name={isGlutenfree ? 'check-box' : 'check-box-outline-blank'}
+              size={24}
+              color="black"
+            />
           </View>
         </TouchableOpacity>
       </View>
 
       {/* next and back button */}
-      {/*<TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ProfilePic')}>
+      {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ProfilePic')}>
         <Text style={styles.buttontext}>Next</Text>
-      </TouchableOpacity>*/}
+      </TouchableOpacity> */}
     </View>
   );
 };

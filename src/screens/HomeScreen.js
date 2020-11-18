@@ -1,30 +1,39 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import {
-  StyleSheet,
-  Text,
-  Image,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Button,
-  Dimensions,
-} from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Octicons, Entypo, MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { NavigationContext } from 'react-navigation';
-
-const dimensions = Dimensions.get('window');
-const { width } = dimensions;
-const { height } = dimensions;
+import SearchBar from '../components/SearchBar';
+import useRecipes from '../hooks/useRecipes';
+import RecipeList from '../components/RecipeList';
 
 const Tab = createBottomTabNavigator();
 
 function Home() {
+  const [term, setTerm] = useState('');
+  const [searchApi, results, errorMessage] = useRecipes();
+
+  const filterResultsByPrice = (price) => {
+    // price === $ $$ $$$
+    return results.filter((result) => {
+      return result.price === price;
+    });
+  };
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
+      // <SearchBar
+      //   term={term}
+      //   onTermChange={(newTerm) => setTerm(newTerm)}
+      //   onTermSubmit={() => searchApi(term)}
+      // /> 
+    <View style={styles.container}>
+      {errorMessage ? <Text>{errorMessage}</Text> : null}
+      <ScrollView>
+        <RecipeList title="Welcome Back!" results={filterResultsByPrice('$')} />
+        <RecipeList title="Continue where you left off!" results={filterResultsByPrice('$$')} />
+        <RecipeList title="What you can make right now!" results={filterResultsByPrice('$$$')} />
+        <RecipeList title="Popular!" results={filterResultsByPrice('$$$')} />
+      </ScrollView>
     </View>
   );
 }
@@ -52,9 +61,10 @@ function Search() {
     </View>
   );
 }
+
 const HomeScreen = () => {
   return (
-    <NavigationContainer>
+      <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Home"
         tabBarOptions={{
@@ -98,7 +108,11 @@ const HomeScreen = () => {
   );
 };
 
-// const styles = StyleSheet.create({
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 10,
+    backgroundColor: '#FEF4D1',
+  },
+});
 
-// });
 export default HomeScreen;

@@ -10,17 +10,16 @@ import Home from './src/screens/HomeScreen';
 
 const navigator = createStackNavigator(
   {
+    Home,
     SignIn,
     SignUp,
     ResetPw,
     DietaryRestrictions,
     EmailSent,
     ProfilePic,
-    Home,
   },
   {
-    //initialRouteName: 'SignIn',
-    initialRouteName: 'Home',
+    initialRouteName: 'SignIn',
     defaultNavigationOptions: {
       title: 'Cooking with Crumbs',
     },
