@@ -48,7 +48,6 @@ const SignIn = ({ navigation }) => {
             setError('');
           }, 5000);
         }
-        response.data.error ? setError(response.data.error) : null;
       })
       .catch(function (error) {
         console.log('error');
