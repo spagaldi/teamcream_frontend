@@ -28,6 +28,9 @@ const OAuth = () => {
         /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
         console.log(accessToken);
         console.log(user);
+
+        // TODO!
+        // Call backend, send email to them... they either create a new user or return existing user json web token
       }
     } catch (err) {
       console.log(err);

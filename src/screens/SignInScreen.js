@@ -90,18 +90,18 @@ const SignIn = ({ navigation }) => {
         />
       </View>
 
-      <View style ={{
-              borderColor: 'black',
-              borderWidth: 1,
-              borderRadius: 3,
+      <View
+        style={{
+          borderColor: 'black',
+          borderWidth: 1,
+          borderRadius: 3,
         }}>
-        <Button   
-            onPress={() => SignInAxios()}
-            // style={styles.acctButton}
-            title="Login"
-            color="#D9B580"
-            
-          />
+        <Button
+          onPress={() => SignInAxios()}
+          // style={styles.acctButton}
+          title="Login"
+          color="#D9B580"
+        />
       </View>
 
       {/* LINE OR LINE */}
