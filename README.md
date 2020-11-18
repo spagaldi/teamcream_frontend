@@ -8,7 +8,7 @@
 
 **Pulling from branch:**
 * Before pulling from a branch, you have to “git add .” and “git commit -m “some_message”” all your changes. 
-* Then run a “git pull origin branch_name” to the branch you want to pull from. 
+* Then run a “git pull” to the branch you want to pull from. 
 * Note: you should always pull from master (“git pull” defaults to pulling from master).
 
 **Creating a branch with a partner:**
@@ -28,11 +28,11 @@
 1. Get up to date repo on your local device
     1. Git pull
         * Npm install
-    2. Git clone <repo>
+    2. Git clone `<repo>`
         * Npm install
 2. Create branch or move into your own branch
-    1. (new) git checkout -b <branchname>
-    2. (existing) git checkout <branchname>
+    1. (new) git checkout -b `<branchname>`
+    2. (existing) git checkout `<branchname>`
 3. Merge your existing branch with master
     1. (new branch) you dont need to do anything
     2. (existing) git merge main
