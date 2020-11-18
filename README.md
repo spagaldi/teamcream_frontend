@@ -8,7 +8,7 @@
 
 **Pulling from branch:**
 * Before pulling from a branch, you have to “git add .” and “git commit -m “some_message”” all your changes. 
-* Then run a “git pull origin branch_name” to the branch you want to pull from. 
+* Then run a “git pull” to the branch you want to pull from. 
 * Note: you should always pull from master (“git pull” defaults to pulling from master).
 
 **Creating a branch with a partner:**
