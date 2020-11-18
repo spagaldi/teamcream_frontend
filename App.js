@@ -6,9 +6,11 @@ import ResetPw from './src/screens/ResetPwScreen';
 import DietaryRestrictions from './src/screens/DietaryRestrictions';
 import EmailSent from './src/screens/EmailSent';
 import ProfilePic from './src/screens/ProfilePic';
+import Home from './src/screens/HomeScreen';
 
 const navigator = createStackNavigator(
   {
+    Home,
     SignIn,
     SignUp,
     ResetPw,
@@ -17,7 +19,7 @@ const navigator = createStackNavigator(
     ProfilePic,
   },
   {
-    initialRouteName: 'SignIn',
+    initialRouteName: 'Home',
     defaultNavigationOptions: {
       title: 'Cooking with Crumbs',
     },
