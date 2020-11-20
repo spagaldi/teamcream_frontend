@@ -4,7 +4,6 @@ import { Octicons, Entypo, MaterialCommunityIcons, FontAwesome } from '@expo/vec
 import { NavigationContainer } from '@react-navigation/native';
 import { NavigationContext, withNavigation } from 'react-navigation';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../screens/HomeScreen';
 import HomeScreen from '../screens/HomeScreen';
 
 function SavedRecipes() {

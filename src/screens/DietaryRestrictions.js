@@ -16,13 +16,16 @@ const dimensions = Dimensions.get('window');
 const { width } = dimensions;
 const { height } = dimensions;
 
-const DietaryRestrictions = ({ navigation }) => {
+const DietaryRestrictions = ({ navigation, route }) => {
   const [isVegetarian, setIsVegetarian] = useState(false);
   const [isDairyfree, setIsDairyfree] = useState(false);
   const [isVegan, setIsVegan] = useState(false);
   const [isGlutenfree, setIsGlutenfree] = useState(false);
 
   return (
+    // this is how to get profilepic from previous screen
+    //  <Image source={navigation.state.params.profilePicture} />
+    // or <Image source={navigation.getParam('profilePicture')} />
     <View style={styles.canvas}>
       {/* Header: please select all that Apply */}
       <View style={{ top: height * 0.15 }}>

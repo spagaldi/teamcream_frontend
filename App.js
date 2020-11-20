@@ -5,7 +5,7 @@ import SignUp from './src/screens/SignUpScreen';
 import ResetPw from './src/screens/ResetPwScreen';
 import DietaryRestrictions from './src/screens/DietaryRestrictions';
 import EmailSent from './src/screens/EmailSent';
-import ProfilePic from './src/screens/ProfilePic';
+import ProfilePic from './src/screens/ProfilePicScreen';
 import Home from './src/screens/HomeScreen';
 
 const navigator = createStackNavigator(
