@@ -18,7 +18,7 @@ const dimensions = Dimensions.get('window');
 const { width } = dimensions;
 const { height } = dimensions;
 
-const ProfilePicScreen = ({ navigation }) => {
+const ProfilePicScreen = ({ navigation, token }) => {
   const [profilePicture, setProfilePicture] = useState(
     require('../../images/profilepicicons/bento_box.png'),
   );
